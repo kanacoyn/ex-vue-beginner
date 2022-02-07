@@ -10,7 +10,9 @@
     <img v-bind:src="image" />
     <hr />
 
-    <button type="button" v-on:click="pressButton">ボタン</button>
+    <button type="button" v-bind:disabled="falseflag" v-on:click="pressButton">
+      ボタン
+    </button>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ export default class XXXComponent extends Vue {
   private hobby = "";
   private url = "";
   private image = "";
+  private falseflag = false;
 
   pressButton(): void {
     this.name = "矢野佳夏子";
@@ -32,8 +35,21 @@ export default class XXXComponent extends Vue {
     this.hobby = "スイム,マラソン";
     this.url = "https://www.nintendo.co.jp/hardware/switch/";
     this.image = "../img/switch.jpg";
+
+    if (this.falseflag) {
+      this.falseflag = false;
+    } else {
+      this.falseflag = true;
+    }
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.sample {
+  text-align: left;
+  border: 4px solid black;
+  width: 600px;
+  padding: 10px;
+}
+</style>

@@ -3,7 +3,8 @@
     <p>名前:{{ name }}</p>
     <p>年齢:{{ age }}</p>
     <p>10年後の年齢:{{ age + 10 }}</p>
-    <p>趣味:{{ hobby }}</p>
+    趣味:
+    <span v-for="hobby of hobbies" v-bind:key="hobby">{{ hobby }}&nbsp;</span>
     <p>
       <a v-bind:href="url">会社リンク</a>
     </p>
@@ -15,13 +16,14 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { Hobby } from "@/types/hobby";
 @Component
 export default class XXXComponent extends Vue {
   private name = "矢野佳夏子";
   private age = 25;
-  private hobby = ["スイム", "バイク"];
   private url = "https://www.nintendo.co.jp/hardware/switch/";
-  private image = "../img/switch.jpg";
+  private image = "/img/switch.jpg";
+  private hobbies = ["水泳", "マラソン"];
 }
 </script>
 
@@ -29,11 +31,7 @@ export default class XXXComponent extends Vue {
 .sample {
   text-align: left;
   border: 3px solid black;
-  padding: 5px;
-}
-
-.info {
-  border: 2px solid;
+  width: 500px;
   padding: 5px;
 }
 </style>
